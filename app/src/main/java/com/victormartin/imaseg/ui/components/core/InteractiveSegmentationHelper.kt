@@ -33,8 +33,7 @@ class InteractiveSegmentationHelper(
     }
 
     private fun setupInteractiveSegmenter() {
-        val baseOptionBuilder = BaseOptions.builder()
-            .setModelAssetPath(MP_MODEL_MAGIC_TOUCH)
+        val baseOptionBuilder = BaseOptions.builder().setModelAssetPath(MP_MODEL_MAGIC_TOUCH)
 
         try {
             val baseOptions = baseOptionBuilder.build()
@@ -47,8 +46,7 @@ class InteractiveSegmentationHelper(
                     .setErrorListener(this::returnSegmenterError)
 
             val options = optionsBuilder.build()
-            interactiveSegmenter =
-                InteractiveSegmenter.createFromOptions(context, options)
+            interactiveSegmenter = InteractiveSegmenter.createFromOptions(context, options)
         } catch (e: IllegalStateException) {
             onError("Interactive segmentation failed to initialize. See error logs for details")
             Log.e(TAG, "MP Task Vision failed to load the task with error: " + e.message)
